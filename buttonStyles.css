@@ -1,0 +1,209 @@
+/*Importing other styles*/
+@import url(CssFundamenatsls.css);
+
+:root{
+    --text-color:#fff;
+    /*using rem units for Responsivve purposes..*/
+    --btn-padding:0.5rem 2rem;
+    --btn-border-radius:7px;
+}
+
+
+
+/*fixing box-model*/
+*{padding: 0; margin: 0; box-sizing: border-box;}
+
+
+
+
+
+
+/*setting my background to look like the given examples*/
+body{
+    display: flex;
+    flex-flow: center;
+    padding: var(--btn-padding);
+    background:  url(https://codespace-assets.global.ssl.fastly.net/wp/assets/website/codespace-primary-logo-light.svg);
+    position: relative;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    mix-blend-mode:inherit;
+}
+
+
+/*i leanrned that using transform-translate is the same as
+  justy content center and align items center..from the flex box properties
+
+*/
+#container{
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    /*using position absolute to avoid over-flow errors*/
+    position: absolute;
+    margin-top: 400px;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: 300px auto-fill;
+    row-gap: 10px;
+    /*still need to modify these style when another is added to the DOM*/
+
+}
+
+
+/*first button*/
+
+/*selecting html button element using Attribute selection*/
+[class="btn-click-attraction"]{
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: 0;
+    border-radius: 7px;
+    background: rgba(225,27,0);
+    background: linear-gradient(0deg,rgba(225,27,1)0% ,rgba(251,75,2,1)100%);
+   transition: ease 0.3s;
+   
+   animation-name: SlideOnLoad;
+   animation-duration: 1000ms;
+   animation-delay: 0.5s;
+   animation-fill-mode: forwards;
+   
+
+}
+
+[class="btn-click-attraction"]:hover{
+    color: #ff0094;
+    background: transparent;
+    box-shadow: none;
+    border: 5px solid #f0094a;
+    
+    flex-flow: center;
+}
+[class="btn-click-attraction"]::before,
+[class="btn-click-attraction"]::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    background: #f0094a;
+    box-shadow: -1px -1px 5px white 7px rgba(0,0,0,0.45);
+    transition: 500ms ease all;
+    
+
+}
+
+/*activating the implicit active class when user clicks on the button*/
+[class="btn-click-attraction"]:active{
+    background-color: rgba(0, 0, 0, 0.9);
+    color: var(--text-color);
+  
+}
+
+
+/*second button*/
+/*selecting using id attribute*/
+[id="btn-hover"]{
+    text-transform: uppercase;
+    padding: var(--btn-padding);
+    border-radius:var(--btn-border-radius) ;
+    border: 0;
+    box-shadow: 0 0 5px rgba(0,0,0,0.45);
+    transition: color 0.4s linear;
+    position: relative;
+    font-family: 'Lato',sans-serif;
+    transition: ease-in-out 0.3s;
+    background: rgb(44, 99, 100);
+    background: linear-gradient(rgb(29, 119, 120));
+    color: var(--text-color);
+
+    animation-name: SlideOnLoad;
+    animation-duration: 1000ms;
+    animation-delay: 0.6s;
+    animation-fill-mode: forwards;
+    
+
+
+}
+/*using the before element to create animated button with overlay background*/
+[id="btn-hover"]::before{
+    content: '';
+    top: 0;
+   
+    right: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgb(232, 222, 222);
+    z-index: -1;
+    border-radius: var(--btn-border-radius);
+    transition:transform 0.5ms;
+    transform-origin:0 0;
+    transition-timing-function: cubic-bezier(0,8,1,0,cubic-bezier(0.455, 0.03, 0.515, 0.955));
+
+
+    
+}
+
+[id="btn-hover"]::before{
+    transform: scaleY(0);
+}
+[id="btn-hover"]:hover::before{
+    transform: scaleY(1);
+    box-shadow: 20px 3px 10px rgba(51, 116, 133, 0.9);
+    color: black;
+    background: linear-gradient(#ff0094,#f0094a);
+}
+
+/*third button*/
+.btn-active-effect{
+    padding: var(--btn-padding);
+    background: linear-gradient(aqua,rgb(15, 218, 191));
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
+    border: 0;
+    border-radius: var(--btn-border-radius);
+    box-shadow: 0 0 10px rgba(5, 218, 191);
+    transition: all ease .3s;
+    
+    animation-name: SlideOnLoad;
+    animation-duration: 1000ms;
+    animation-delay: 0.7s;
+    animation-fill-mode: forwards;
+    
+}
+
+
+/*using box shadow to make it glow when hover on it*/
+.btn-active-effect:hover{
+    box-shadow: 20px 0 10px rgb(38, 193, 172);
+  
+}
+.btn-active-effect:active{
+    background: rgb(106, 217, 217);
+    color: var(--text-color);
+    
+    
+}
+
+
+/*using key frames to slide the buttons when content loads*/
+@keyframes SlideOnLoad{
+    0%{transform: translateX(-400px);
+        opacity: 0;
+        transition: ease-in 3s;
+    }
+    100%{transform: translateX(0);
+    opacity: 1;
+    }
+}
+
+/*Challenges i faced when i was making this project..
+i had a lot of work that i neede to finish before i start with it..
+My LMS , web.dev and freeCodeCamp as well as Dinner Game
+
+
+*/
